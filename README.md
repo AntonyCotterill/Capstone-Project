@@ -1,11 +1,13 @@
 # PROJECT TITLE 
-
+Optimising Predictable Time of arrival for time critical deliveries
 
 ## NON-TECHNICAL EXPLANATION OF YOUR PROJECT
-100 words to explain what your project is about to a general audience. 
+In the delivery business getting goods to the right place at the agreed time is critical. The aim of this project is to build an optimisation model based on historic data and taking into account both travel distance and the weather to help predict delivery times more accuratly. 
 
 ## DATA
-A summary of the data you’re using, remembering to include where you got it and any relevant citations. 
+Working for DHL we have a lot of data however it is also confidential. Therefore, the data used is from Kaggle and is a good representation of the type of data we work with with DHL. The data file is called the Zomato Dataset.csv. It can be found in this repository.
+
+The dataset can also be referenced on kaggle following the link: https://www.kaggle.com/datasets/saurabhbadole/zomato-delivery-operations-analytics-dataset
 
 ## MODEL 
 A summary of the model you’re using and why you chose it. 
