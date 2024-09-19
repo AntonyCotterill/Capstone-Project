@@ -1,5 +1,5 @@
-# PROJECT TITLE 
-Optimising Predictable Time of arrival for time critical deliveries
+# Capstone Project - September 2024 - Professional Certificate in Machine Learning and Artificial Intelligence - Imperial College
+Optimising and predicting the time of arrival for time critical deliveries
 
 ## NON-TECHNICAL EXPLANATION OF YOUR PROJECT
 In the delivery business getting goods to the right place at the agreed time is critical. The aim of this project is to build an optimisation model based on historic data and taking into account both travel distance and the weather to help predict delivery times more accuratly. 
