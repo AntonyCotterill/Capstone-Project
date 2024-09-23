@@ -12,26 +12,26 @@ The Zomato Delivery Data was sourced directly from Zomato's delivery operations,
 
 The data is made up of a single .csv file with the following 
 
-ID: Unique identifier for each delivery.
-Delivery_person_ID: Unique identifier for each delivery person.
-Delivery_person_Age: Age of the delivery person.
-Delivery_person_Ratings: Ratings assigned to the delivery person.
-Restaurant_latitude: Latitude of the restaurant.
-Restaurant_longitude: Longitude of the restaurant.
-Delivery_location_latitude: Latitude of the delivery location.
-Delivery_location_longitude: Longitude of the delivery location.
-Order_Date: Date of the order.
-Time_Ordered: Time the order was placed.
-Time_Order_picked: Time the order was picked up for delivery.
-Weather_conditions: Weather conditions at the time of delivery.
-Road_traffic_density: Density of road traffic during delivery.
-Vehicle_condition: Condition of the delivery vehicle.
-Type_of_order: Type of order (e.g., dine-in, takeaway, delivery).
-Type_of_vehicle: Type of vehicle used for delivery.
-Multiple_deliveries: Indicator of whether multiple deliveries were made in the same trip.
-Festival: Indicator of whether the delivery coincided with a festival.
-City: City where the delivery took place.
-Time_taken (min): Time taken for delivery in minutes.
+1. ID: Unique identifier for each delivery.
+2. Delivery_person_ID: Unique identifier for each delivery person.
+3. Delivery_person_Age: Age of the delivery person.
+4. Delivery_person_Ratings: Ratings assigned to the delivery person.
+5. Restaurant_latitude: Latitude of the restaurant.
+6. Restaurant_longitude: Longitude of the restaurant.
+7. Delivery_location_latitude: Latitude of the delivery location.
+8. Delivery_location_longitude: Longitude of the delivery location.
+9. Order_Date: Date of the order.
+10. Time_Ordered: Time the order was placed.
+11. Time_Order_picked: Time the order was picked up for delivery.
+12. Weather_conditions: Weather conditions at the time of delivery.
+13. Road_traffic_density: Density of road traffic during delivery.
+14. Vehicle_condition: Condition of the delivery vehicle.
+15. Type_of_order: Type of order (e.g., dine-in, takeaway, delivery).
+16. Type_of_vehicle: Type of vehicle used for delivery.
+17. Multiple_deliveries: Indicator of whether multiple deliveries were made in the same trip.
+18. Festival: Indicator of whether the delivery coincided with a festival.
+19. City: City where the delivery took place.
+20. Time_taken (min): Time taken for delivery in minutes.
 
 There are 45584 rows of data in the .csv file.
 
@@ -49,10 +49,18 @@ There are no details as to whether this is a subset of data of a larger set or t
 
 ## Preprocessing/cleaning/labelling
 
-- Was any preprocessing/cleaning/labeling of the data done (e.g., discretization or bucketing, tokenization, part-of-speech tagging, SIFT feature extraction, removal of instances, processing of missing values)? If so, please provide a description. If not, you may skip the remaining questions in this section. 
-- Was the “raw” data saved in addition to the preprocessed/cleaned/labeled data (e.g., to support unanticipated future uses)?
+There was no apparent pre-cleaning of the data in the data set. 
 
-There was no apparent cleaning of the data in the data set. For processing purposes data was removed largly due to invalid entries, NaN values and logically out of range values (e.g -ve longitudinal coordinates)
+For processing purposes data was removed largly due to invalid entries, NaN values and logically out of range values (e.g -ve longitudinal coordinates)
+
+In the Jupyter Notebook submitted as part of this project the following cleaning steps can be seen.
+1. There are man rows where the data for the longitude or latitude values are negative which is not possible as the data is sourced from India. There rows were removed.
+2. The naming convention used for the columns needed tidying to remove issues that could arise whilst manipulating the data.
+3. There are quite a few duplicates in the dataset and following a little research on the Kaggle data set the duplicates were removed.
+4. The times provided were the order time, the pick time and the overall delivery time. For this exercise I am interested in the travel time so this had to be calculate. Care was needed here as an order may be placed before midnight and delivered after. Travel time is in minutes. There was also inconsistency in teh format of the date and times which needed to be tidied up.
+5.  The next field that is required is the travel distance. The data supplied identified the longitude and latitude of the locations. The haversine function was established to caluldate the distance between the locations.
+6.  There was some data e.g. order date that is not interesting for this exercise so it was removed from the dataset.
+7.  Finally there were some fields with literal values in them that needed to be converted to number fields. This created a lot of extra fields (maybe I change this)
  
 ## Uses
 
