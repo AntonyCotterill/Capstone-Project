@@ -86,7 +86,53 @@ Substituing ReLU with PReLU and LeakyReLU did not improve the result even when c
 SGD and RMSProp were tried as optimisers but neither, even with parameter changes could out-perform Adam
 
 ## RESULTS
-A summary of your results and what you can learn from your model 
+
+The results are shown in detail in the juypter notebook including graphs of the feature importance.
+
+Results can be split into three categories
+1. The performance of each of the optimisations (calculated in the execution and presented at the end of the Jupyter Notebook
+2. The relvance of the features including a summary (Summary Graphs after each optimisation and a combined graphs at the end of the Jupyter Notebook)
+3. The summary and implications in business language
+
+### Performance of the optimisations
+
+----Optimization Type-------------RMSE
+1. Linear Regression-------------7.054342
+2. GridSearchCV using Ridge-----7.053524
+3. BayesSearch Random Forest--5.408481
+4. BayesSearch SVR-------------6.516862
+5. BayesSearch KNearest--------6.791588
+6. Neural Network---------------5.749636
+
+Therefore, BayesSeachCV with Random Forest and the Neural network performed the best although they actually didn't rank the features equally.
+
+### The relvance of the features in the dataset
+
+The top six features in order of relevance are
+
+1. Distance (to be expected)
+2. Road Traffic Density - Jams
+3. Delivery Person Age
+4. Road Traffic Density = Low
+5. Delivery Person Rating
+6. Vehicle Condition
+
+In the Jupyter notebook the full break down is shown with the relevant scores.
+
+### Implications for the Business User
+
+The distance being the biggest influencing factor could have been predicted but the delivery persons age and rating proved for more important that other factors.
+
+Weather also was signifcant but sandstorms for example did not appear to influence greatly probably due to very few data items.
+
+There were also items that had almost no impact of the predictability of the times namely the environments the travel was in e.g. metropolitan or rural which was surprising but less surprising was the tyupe of food being transported.
+
+The type of food played very little signficance in any of the optimisation so could probably be dropped from the data set to help increase the performance.
+
+Running the multiple Optimisations and also looking at the average rankings of the results means that there can be confidence in the findings.
+
+However, also note that 
+
 
 ## (OPTIONAL: CONTACT DETAILS)
 I can be found on linkedIn at www.linkedin.com/in/antony-cotterill-a8aa453
