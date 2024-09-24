@@ -1,5 +1,5 @@
 # Capstone Project - September 2024 - Professional Certificate in Machine Learning and Artificial Intelligence - Imperial College
-Optimising and predicting the time of arrival for time critical deliveries
+Optimising and predicting the time of arrival for time critical meal deliveries 
 
 ## NON-TECHNICAL EXPLANATION OF YOUR PROJECT
 In the delivery business getting goods to the right place at the agreed time is critical. The aim of this project is to build an optimisation model based on historic data and taking into account all of the factors that can affect the delivery time including but not limited to travel distance, type of products being shipped, transport method and driver charateristics (popularity and age) and of course the weather to help predict delivery times more accuratly. The focus of this exercise was on the travel time and not the time spent after the order was recieved until delivery. (Cooking time in the case of the Zomato food delivery data was not to be taken into account.)
@@ -19,7 +19,7 @@ I am keen to understand how different models can perform for the same data. Ther
 5. Bayesian Optimisation using K-Nearest Neighbour
 6. Neural Network
 
-Each of the alogorithms were tuned and all executed against the same dataset. Performance results were captured against each algorithm and also the features that that drove each optimisation. At the end of the Juypter Notebook the features are ranked as to their respective performance.
+Each of the alogorithms were tuned and all executed against the same dataset. Performance results were captured against each algorithm and also the features that that drove each optimisation. The feature ranking is shown after each optimisation run and at the end of the Juypter Notebook the features are ranked as to their respective performance based on all optimisations.
 
 ## HYPERPARAMETER OPTIMSATION
 With 6 algorthms to compare, each optimisations hyper parameters are considered in turn
@@ -29,29 +29,39 @@ There is little tuning to be done on the LinerRegression.
 Changing fit_intercept=False has a very negative impact on the performance
 
 ### GridSeachCV
-The nature of gridsearch means that it is the function that identifies the best parameters from those made available.
-The chosen paramters to investigate were "alpha" and "Solver" and the best values were alpha of 10, Solver of Saga.
+The nature of gridsearch means that it is the function that identifies the best parameters from those made available to it.
+The chosen paramters to investigate were "alpha" and "Solver" and the best values were alpha of 10, Solver of 'Saga'.
 
 ### Bayesian Optimisation - Random Forest
-Utilising Random Forest the key parameters changed were n_estimators (10,500) max_depth list(range(1,11)) min_samples_split': (2, 80)
+Utilising Random Forest the key parameters changed were 
+
+1. n_estimators (10,500)
+2. max_depth list(range(1,11))
+3. min_samples_split': (2, 80)
 
 Having these values gave the best output, although reducing the values did worsen the output it wasn't too significant meaning the RandomForest was performing quite well for the given data.
 
-The output from the BayesianSearchCV was max_depth = 11 min_sample_split = 18 n_estimators = 260
+The output from the BayesianSearchCV was 
+
+1. max_depth = 11
+2. min_sample_split = 18
+3. n_estimators = 260
 
 ### Bayesian Optimisation using SVR
 This process was extremly slow. Therefore given the limited time some compromised and assumptions had to be made.
 The inital runs were set with a cv as 5 and n_iter as 5. Any higher values were taking far to long (hours) to respond. These runs were executed with the:-
+
 1. 'C': (0.1, 1000),  # Regularization parameter
 2. 'epsilon': (0.01, 0.5),  # Epsilon in the epsilon-SVR model
 3. 'kernel': ['linear', 'poly', 'rbf', 'sigmoid'],  # Kernel type
 
 The output was then
+
 1. 'C', 837.404616717729
 2. 'epsilon', 0.4428244859166225
 3. 'kernel', 'poly'
 
-These values were then hard coded to allow maniuplation of CV and n_iter but the performance did not change measurably.
+These values were then hard coded to allow maniuplation of CV and n_iter but the algorithm performance did not change measurably. Further optimisation may be possible on this approach but owing to performance constraints not further runs were completed.
 
 ### Bayesian Optimisation using K-Nearest Neighbour
 
@@ -121,17 +131,17 @@ In the Jupyter notebook the full break down is shown with the relevant scores.
 
 ### Summary and Implications for the Business User
 
-The distance being the biggest influencing factor could have been predicted but the delivery persons age and rating proved for more important that other factors.
+The distance being the biggest influencing factor could have been predicted but the delivery persons age and rating proved far more important that other factors.
 
-Weather also was signifcant but sandstorms for example did not appear to influence greatly probably due to very few data items.
+Caertain weather conditions were also signifcant but some e.g. sandstorms did not appear to influence greatly probably due to very few data items.
 
-There were also items that had almost no impact of the predictability of the times namely the environments the travel was in e.g. metropolitan or rural which was surprising but less surprising was the tyupe of food being transported.
+There were also items that had almost no impact of the predictability of the times namely the environments the travel was in e.g. metropolitan or rural which was surprising but less surprising was the type of food being transported.
 
 The type of food played very little signficance in any of the optimisation so could probably be dropped from the data set to help increase the performance.
 
 Running the multiple Optimisations and also looking at the average rankings of the results means that there can be confidence in the findings.
 
-However, also note that that the range of travel times was 0-49 minutes. The average predicted deviation from the correct time on the test data was 5.5 - 6 minutes so upto a 12% deviation. This said, if I was waiting for a delivery of my dinner then a 6 minutes deviation from the time proposed would be quite acceptable .. provided the food hadn't got cold!
+However, also note that that the range of travel times was 0-49 minutes. The average predicted deviation from the actual time on the test data was 5.5 - 6 minutes so upto a 12% deviation. This said, if I was waiting for a delivery of my dinner then a 6 minutes deviation from the time proposed would be quite acceptable .. provided the food hadn't got cold!
 
 
 ## (OPTIONAL: CONTACT DETAILS)
