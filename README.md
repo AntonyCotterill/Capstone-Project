@@ -131,7 +131,7 @@ The type of food played very little signficance in any of the optimisation so co
 
 Running the multiple Optimisations and also looking at the average rankings of the results means that there can be confidence in the findings.
 
-However, also note that that the range of travel times was 0-49 minutes. The average predicted deviation from the correct time on the test data was 5.5 - 6 minutes so upto a 12% deviation. This said, if I was waiting for a delivery of my dinner than a 6 minutes deviation from the time proposed would be quite acceptable .. provided the food hadn't got cold!
+However, also note that that the range of travel times was 0-49 minutes. The average predicted deviation from the correct time on the test data was 5.5 - 6 minutes so upto a 12% deviation. This said, if I was waiting for a delivery of my dinner then a 6 minutes deviation from the time proposed would be quite acceptable .. provided the food hadn't got cold!
 
 
 ## (OPTIONAL: CONTACT DETAILS)
